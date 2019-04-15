@@ -1,0 +1,38 @@
+<ng4-loading-spinner> </ng4-loading-spinner>
+<!-- START BREADCRUMB -->
+ <ul class="breadcrumb">
+    <li><a>STB</a></li>                    
+    <li>Email</li>
+</ul>
+<!-- END BREADCRUMB -->                       
+
+<!-- START CONTENT FRAME BODY -->
+ <!-- START CONTENT FRAME -->
+ <div class="content-frame">                                    
+        <!-- START CONTENT FRAME TOP -->
+        <div class="content-frame-top">                        
+            <div class="page-title">                    
+                <h2><span class="fa fa-inbox"></span> Inbox <small>({{EmailStat.countReaden}} unread)</small></h2>
+            </div>                     
+        </div>
+        <!-- END CONTENT FRAME TOP -->
+        
+        <!-- START CONTENT FRAME LEFT -->
+        <div class="content-frame-left">
+            <div class="block">
+                <a [routerLink]="['draft']" class="btn btn-danger btn-block btn-lg"><span class="fa fa-edit"></span> COMPOSE</a>
+            </div>
+            <div class="block">
+                <div class="list-group border-bottom">
+                    <a [routerLink]="['inbox']"  class="list-group-item active"><span class="fa fa-inbox"></span> Inbox <span class="badge badge-success">{{EmailStat.countInbox}}</span></a>
+                    <a [routerLink]="['sent']"  class="list-group-item"><span class="fa fa-rocket"></span><span class="badge badge-default">{{EmailStat.countSent}}</span>Sent</a>
+                    <a [routerLink]="['trash']" class="list-group-item"><span class="fa fa-floppy-o"></span> Draft <span class="badge badge-default">{{EmailStat.countDraft}}</span></a>     
+                    <a [routerLink]="['deleted']" class="list-group-item"><span class="fa fa-trash-o"></span> Deleted <span class="badge badge-default">{{EmailStat.countDeleted}}</span></a>                       
+                </div>                        
+            </div>
+        </div>
+        <div class="content-frame-body" >
+            <router-outlet></router-outlet>
+        </div>
+</div>
+<!-- END CONTENT FRAME -->

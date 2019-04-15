@@ -1,0 +1,124 @@
+ <!-- START PAGE CONTAINER -->
+ <div class="page-container">
+            
+    <!-- START PAGE SIDEBAR -->
+    <div class="page-sidebar">
+       <!-- START X-NAVIGATION -->
+       <ul class="x-navigation">
+           <li class="xn-logo">
+               <a >STB</a>
+               <a  class="x-navigation-control"></a>
+           </li>
+           <li class="xn-profile">
+               <a  class="profile-mini">
+                   <img src="../../assets/img/amine.png" />
+               </a>
+               <div class="profile">
+                   <div class="profile-image">
+                       <img src="../../assets/img/amine.png" />
+                   </div>
+                   <div class="profile-data">
+                       <div class="profile-data-name" *ngIf="Employe?.nomPersonne != null">{{Employe?.nomPersonne}}</div>
+                       
+                   </div>
+                   <div class="profile-controls">
+                       <!--<a  [routerLink]="['profile']" (click)="reloadRoute()" class="profile-control-left"><span class="fa fa-info"></span></a>-->
+                       <a  [routerLink]="['email/inbox']" (click)="reloadRoute()"  class="profile-control-right"><span class="fa fa-envelope"></span></a>
+                   </div>
+               </div>                                                                        
+           </li>
+   
+           <li class="xn-title">Home</li>
+           <li>
+               <a [routerLink]="['dashboard']" (click)="reloadRoute()" ><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
+           </li>
+   
+           <li class="xn-title">Operations</li>
+           <li>
+               <a [routerLink]="['operation']" (click)="reloadRoute()" ><span class="fa fa-cogs"></span> <span class="xn-text">Normal Operation</span></a>
+           </li>                    
+           <li>
+               <a [routerLink]="['cheque']" (click)="reloadRoute()" ><span class="fa fa-pencil"></span> <span class="xn-text">Payment Check</span></a>
+           </li>
+           <li>
+               <a [routerLink]="['change']" (click)="reloadRoute()" ><span class="fa fa-cogs"></span> <span class="xn-text">BUY/SALE Currency</span></a>
+           </li>
+   
+           <li class="xn-title">Additional Services</li>
+           <li>
+            <a [routerLink]="['email/inbox']" (click)="reloadRoute()"><span class="fa fa-envelope-o"></span> <span class="xn-text">E-Mail Service</span><div class="informer informer-warning">{{EmailStat.countReaden}}</div></a>                        
+           </li>
+           <li>
+               <a [routerLink]="['task']" (click)="reloadRoute()"><span class="fa fa-table"></span> <span class="xn-text">Task</span></a>                        
+           </li>
+           <li>
+                <a><span class="xn-text"></span></a>                        
+            </li>
+   
+       </ul>
+       <!-- END X-NAVIGATION -->
+   </div>
+   <!-- END PAGE SIDEBAR -->
+       
+       <!-- PAGE CONTENT -->
+       <div class="page-content">
+           
+           <!-- START X-NAVIGATION VERTICAL -->
+           <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+               <!-- TOGGLE NAVIGATION -->
+               <li class="xn-icon-button">
+                   <a class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
+               </li>
+               <!-- END TOGGLE NAVIGATION -->
+               <!-- SEARCH -->
+               <li class="xn-search">
+                   <form role="form">
+                       <input type="text" name="search" placeholder="Search..."/>
+                   </form>
+               </li>   
+               <!-- END SEARCH -->
+               <!-- SIGN OUT -->
+               <li class="xn-icon-button pull-right">
+                   <a  (click)="logout()" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
+               </li> 
+               <!-- END SIGN OUT -->
+               <!-- MESSAGES -->
+               <li class="xn-icon-button pull-right">
+                   <a [routerLink]="['chat']" (click)="reloadRoute()"  ><span class="fa fa-comments"></span></a>
+                   <div class="informer informer-danger">{{nbrMsgs}}</div>            
+               </li>
+               <!-- END MESSAGES -->
+               <!-- TASKS -->
+               <li class="xn-icon-button pull-right">
+                   <a><span class="fa fa-tasks"></span></a>
+                   <div class="informer informer-warning">{{nbrNotif}}</div>
+                   <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
+                       <div class="panel-heading">
+                           <h3 class="panel-title"><span class="fa fa-tasks"></span> Notifications</h3>                                
+                           <!--<div class="pull-right">
+                               <span class="label label-warning">3</span>
+                           </div>-->
+                       </div>
+                       <div class="panel-body list-group scroll" style="height: 200px;">
+                           <a class="list-group-item" *ngFor="let task of notifications | async">
+                               <strong>{{task.msg}}</strong><br>
+                               <small class="text-muted">{{task.date}}</small>
+                           </a>                               
+                       </div>     
+                       <div class="panel-footer text-center">
+                       </div>                            
+                   </div>                        
+               </li>
+               <!-- END TASKS -->
+           </ul>
+           <!-- END X-NAVIGATION VERTICAL -->
+           <router-outlet>
+           </router-outlet>   
+   
+       </div>  
+             
+       <!-- END PAGE CONTENT -->
+       </div>
+       <!-- END PAGE CONTAINER --> 
+
+       
